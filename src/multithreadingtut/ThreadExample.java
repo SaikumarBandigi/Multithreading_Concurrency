@@ -1,19 +1,20 @@
 package multithreadingtut;
 
 public class ThreadExample {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 
-        ThreadExample example = new ThreadExample();
+        ThreadExample obj = new ThreadExample();
 
         Thread t1 = new Thread(() -> {
             for (int i = 1; i <= 1000; i++) {
-                example.increment();
+                obj.increment();
             }
         });
 
+
         Thread t2 = new Thread(() -> {
             for (int i = 1; i <= 1000; i++) {
-                example.increment();
+                obj.increment();
             }
         });
 
@@ -23,9 +24,10 @@ public class ThreadExample {
         t1.join();
         t2.join();
 
-        System.out.println(example.getCount());
+        System.out.println(obj.getCount());
 
     }
+
 
     int count;
 
@@ -36,5 +38,7 @@ public class ThreadExample {
     public int getCount() {
         return count;
     }
+
+
 }
 
